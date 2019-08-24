@@ -3,10 +3,7 @@
 return [
     'extends' => 'url',
     'computed' => [
-        // 'value' => function() {
-        //     return $this->value;
-        // },
-        'embed' => function() {
+        'value' => function() {
             $yaml = Yaml::decode($this->value);
             return count($yaml) ? $yaml : $this->value;
         }
