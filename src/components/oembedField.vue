@@ -36,7 +36,7 @@ export default {
     },
     computed: {
         hasMedia() {
-            return this.hasLength(this.media)
+            return this.hasLength(this.media) && this.media.code
         },
         inputValue() {
             return this.value.input

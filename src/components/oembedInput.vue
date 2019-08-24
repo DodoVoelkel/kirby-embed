@@ -3,6 +3,7 @@ export default {
     extends: 'k-url-input',
     methods: {
         onInput(value) {
+            if(!this.isUrl(value)) return;
             this.$api
                 .get('kirby-oembed/get-data', { url: value })
                 .then(response => {
@@ -22,10 +23,15 @@ export default {
         },
         emitInput(value) {
             this.$emit("input", {
-                input: value,
+                input: value ? value : '',
                 media: this.media
             });
             this.$emit("setMedia", this.media)
+        },
+        isUrl(value) {
+          const pattern = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/g
+          const regex = new RegExp(pattern)
+          return !value || value.match(regex)
         }
     }
 };
