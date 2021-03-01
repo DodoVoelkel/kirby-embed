@@ -17,3 +17,18 @@ Kirby::plugin('sylvainjule/embed', [
         'fr' => require_once __DIR__ . '/lib/languages/fr.php',
     ),
 ]);
+
+// Embed Block
+// -----------------------------------------------------------------------------
+Kirby::plugin('dodovoelkel/embed', [
+    'plugin'  => require __DIR__ . '/blocks/embed/embed.php',
+    
+    'blueprints' => [
+        'blocks/embed' => __DIR__ . '/blocks/embed/embed.yml',
+    ],
+    
+    'snippets' => [
+        'blocks/embed'    => __DIR__ . '/blocks/embed/embed.php'
+        ]
+        
+]);
